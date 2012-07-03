@@ -15,7 +15,7 @@ except:
 	print "Usage: " + sys.argv[0] + " <Interface> <Target's IP>"
 	sys.exit(1)
 
-def mitm(interface, targetIP, interval=15):
+def mitm(interface, targetIP, interval=10):
 	"""Man In The Middle attack"""
 
 	try:

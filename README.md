@@ -2,7 +2,7 @@
 
 ARP cache poisoning implementation using Scapy.
 
-## Dependancies
+## Dependencies
 
  * Python 2.6 or 2.7
  * [Scapy][1] package

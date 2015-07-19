@@ -13,7 +13,7 @@ from argparse import ArgumentParser
 
 def mitm(interface, target, interval=10):
 	"""ARP cache poisoning attack"""
-	
+
 	try:
 		myMAC = get_if_hwaddr(interface)
 		print("[*] Starting attack ...")
@@ -23,7 +23,6 @@ def mitm(interface, target, interval=10):
 	except IOError:
 		exit("[!] Interface doesn't exist")
 	except KeyboardInterrupt:
-		pass
 		print("\n[*] Stopping attack")
 
 if not geteuid() == 0:

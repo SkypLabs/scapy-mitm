@@ -30,9 +30,9 @@ if __name__ == "__main__":
 		exit("[!] You must be root")
 
 	ap = ArgumentParser(description="ARP cache poisoning implementation using Scapy")
-	ap.add_argument("-i", "--interface", required = True, help = "network interface")
-	ap.add_argument("-t", "--target", required = True, help = "target's IP")
-	ap.add_argument("-I", "--interval", type=float, default=10, help = "seconds between two ARP frames (default: 10s)")
+	ap.add_argument("-i", "--interface", required = True, help = "network interface to use")
+	ap.add_argument("-t", "--target", required = True, help = "target's IP address")
+	ap.add_argument("-I", "--interval", type=float, default=10.0, help = "seconds between two ARP frames (default: 10.0s)")
 	args = vars(ap.parse_args())
 
 	mitm(args["interface"], args["target"], args["interval"])

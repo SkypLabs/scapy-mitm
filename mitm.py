@@ -11,7 +11,7 @@ from os import geteuid
 from sys import argv, exit
 from argparse import ArgumentParser
 
-def arp_mitm(interface, target, interval=10):
+def arp_mitm(interface, target, interval=10.0):
 	"""ARP cache poisoning attack"""
 
 	myMAC = get_if_hwaddr(interface)
@@ -21,9 +21,9 @@ def arp_mitm(interface, target, interval=10):
 
 if __name__ == "__main__":
 	ap = ArgumentParser(description="ARP cache poisoning implementation using Scapy")
-	ap.add_argument("-i", "--interface", required = True, help = "network interface to use")
-	ap.add_argument("-t", "--target", required = True, help = "target's IP address")
-	ap.add_argument("-I", "--interval", type=float, default=10.0, help = "seconds between two ARP frames (default: 10.0s)")
+	ap.add_argument("-i", "--interface", required=True, help="network interface to use")
+	ap.add_argument("-t", "--target", required=True, help="target's IP address")
+	ap.add_argument("-I", "--interval", type=float, default=10.0, help="seconds between two ARP frames (default: 10.0s)")
 	args = vars(ap.parse_args())
 
 	if not geteuid() == 0:

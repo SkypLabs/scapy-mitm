@@ -6,9 +6,9 @@ ARP cache poisoning implementation using Scapy.
 
 ## Dependencies
 
- * Python 2.6 or 2.7
- * [Scapy][scapy]
- * [argparse][argparse] (included with Python >= 2.7 and >= 3.2)
+* Python 2.6 or 2.7
+* [Scapy][scapy]
+* [argparse][argparse] (included with Python >= 2.7 and >= 3.2)
 
 ### On Fedora
 
@@ -24,18 +24,22 @@ ARP cache poisoning implementation using Scapy.
 
 ## How to
 
-Two arguments are required :
+    usage: arp-mitm [-h] -i INTERFACE -t TARGET [-I INTERVAL]
 
-* The NIC's name to use
-* The IP address you want to hijack
+    ARP cache poisoning implementation using Scapy
 
-For example :
+    optional arguments:
+      -h, --help            show this help message and exit
+      -i INTERFACE, --interface INTERFACE
+                            network interface to use
+      -t TARGET, --target TARGET
+                            target's IP address
+      -I INTERVAL, --interval INTERVAL
+                            seconds between two ARP frames (default: 10.0s)
 
-    sudo ./mitm.py -i eth0 -t 192.168.1.1
+For example:
 
-For more information :
-
-    sudo ./mitm.py -h
+    sudo ./arp-mitm -i eth0 -t 192.168.1.1
 
 ## License
 

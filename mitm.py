@@ -8,7 +8,7 @@
 from scapy.all import *
 from time import sleep
 from os import geteuid
-from sys import argv, exit
+from sys import exit
 from argparse import ArgumentParser
 
 def arp_mitm(interface, target, interval=10.0):

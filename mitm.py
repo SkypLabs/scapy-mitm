@@ -8,7 +8,7 @@ ARP cache poisoning implementation using Scapy.
 from argparse import ArgumentParser
 from os import geteuid
 from scapy.all import *
-from sys import exit
+from sys import exit as sysexit
 from time import sleep
 
 def arp_mitm(interface, target, interval=10.0):
@@ -29,12 +29,12 @@ if __name__ == "__main__":
     args = vars(ap.parse_args())
 
     if not geteuid() == 0:
-        exit("[!] You must be root")
+        sysexit("[!] You must be root")
 
     try:
         print("[*] Starting the ARP MITM attack...")
         arp_mitm(args["interface"], args["target"], args["interval"])
     except IOError:
-        exit("[!] Interface doesn't exist")
+        sysexit("[!] Interface doesn't exist")
     except KeyboardInterrupt:
         print("\n[*] Stopping the ARP MITM attack")

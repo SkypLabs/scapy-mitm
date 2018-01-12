@@ -5,11 +5,11 @@
 	 ARP cache poisoning implementation using Scapy
 """
 
-from scapy.all import *
-from time import sleep
-from os import geteuid
-from sys import exit
 from argparse import ArgumentParser
+from os import geteuid
+from scapy.all import *
+from sys import exit
+from time import sleep
 
 def arp_mitm(interface, target, interval=10.0):
 	"""ARP cache poisoning attack"""

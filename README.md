@@ -1,6 +1,6 @@
 # Scapy mitm
 
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/f5ccc6e8643f4bd9bddfb1e4f7377fac)](https://www.codacy.com/app/skyper/scapy-mitm?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=SkypLabs/scapy-mitm&amp;utm_campaign=Badge_Grade)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/f5ccc6e8643f4bd9bddfb1e4f7377fac)](https://www.codacy.com/app/skyper/scapy-mitm?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=SkypLabs/scapy-mitm&amp;utm_campaign=Badge_Grade) [![Known Vulnerabilities](https://snyk.io/test/github/skyplabs/scapy-mitm/badge.svg?targetFile=requirements.txt)](https://snyk.io/test/github/skyplabs/scapy-mitm?targetFile=requirements.txt)
 
 ARP cache poisoning implementation using Scapy.
 

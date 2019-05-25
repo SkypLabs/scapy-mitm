@@ -1,5 +1,17 @@
 # Changelog
 
+## v1.2.0 - May 25, 2019
+
+### New Features
+
+* Display version number with `--version`
+
+### Improvements
+
+* Stick to the PEP 8 style guide
+* Add a `pre-commit` configuration file
+* Add a Probot Settings configuration file
+
 ## v1.1.1 - Jan 12, 2018
 
 ### Improvements

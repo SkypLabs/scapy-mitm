@@ -5,6 +5,8 @@
 ARP cache poisoning implementation using Scapy.
 """
 
+# pylint: disable=invalid-name
+
 from argparse import ArgumentParser
 from os import geteuid
 from sys import exit as sysexit

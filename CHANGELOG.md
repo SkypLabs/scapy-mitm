@@ -1,6 +1,6 @@
 # Changelog
 
-## v1.2.0 - Jan 12, 2018
+## v1.1.1 - Jan 12, 2018
 
 ### Improvements
 

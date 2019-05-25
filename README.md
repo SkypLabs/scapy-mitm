@@ -15,7 +15,7 @@
 
 ## How to
 
-    usage: arp-mitm [-h] -i INTERFACE -t TARGET [-I INTERVAL]
+    usage: arp-mitm [-h] -i INTERFACE -t TARGET [-I INTERVAL] [--version]
 
     ARP cache poisoning implementation using Scapy
 
@@ -27,6 +27,7 @@
                             target's IP address
       -I INTERVAL, --interval INTERVAL
                             seconds between two ARP frames (default: 10.0s)
+      --version             show program's version number and exit
 
 For example:
 

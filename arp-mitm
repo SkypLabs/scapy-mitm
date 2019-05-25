@@ -15,6 +15,8 @@ from time import sleep
 from scapy.layers.l2 import Ether, ARP, get_if_hwaddr
 from scapy.sendrecv import sendp
 
+VERSION = "1.1.1"
+
 
 def arp_mitm(interface, target, interval=10.0):
     """
@@ -51,6 +53,9 @@ def get_arg_parser():
         "-I", "--interval",
         type=float, default=10.0,
         help="seconds between two ARP frames (default: 10.0s)"
+    )
+    arg_parser.add_argument(
+        "--version", action="version", version=VERSION
     )
 
     return arg_parser

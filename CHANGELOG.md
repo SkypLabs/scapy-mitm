@@ -2,7 +2,7 @@
 
 ## v1.2.0 - Jan 12, 2018
 
-### Features
+### Improvements
 
 * Rename `mitm.py` to `arp-mitm`
 * Add `requirements.txt`
@@ -15,9 +15,15 @@
 
 ## v1.1.0 - Jul 20, 2015
 
-### Features
+### New Features
 
 * Use `argparse` module
+
+### Improvements
+
+* Allow to import `mitm.py` into another Python script
+* Improve help messages
+* Possibility to use `--help` without being root
 
 ## v1.0.0 - Jun 13, 2015
 

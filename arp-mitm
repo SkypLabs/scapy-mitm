@@ -14,7 +14,7 @@ from sys import exit as sysexit
 from scapy.layers.l2 import Ether, ARP, get_if_hwaddr
 from scapy.sendrecv import sendp
 
-VERSION = "1.2.0"
+VERSION = "1.2.1"
 
 
 def arp_mitm(interface, target, interval=10.0):

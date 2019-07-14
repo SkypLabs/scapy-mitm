@@ -1,5 +1,16 @@
 # Changelog
 
+## v1.2.1 - July 14, 2019
+
+### Improvements
+
+* Use the parameters `inter` and `loop` of the function `sendp`
+* Use commit ids instead of Git tags in the pre-commit configuration
+
+### Fixes
+
+* The parameter `iface` of the function `sendp` was not set
+
 ## v1.2.0 - May 25, 2019
 
 ### New Features

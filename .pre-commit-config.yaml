@@ -1,6 +1,6 @@
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v2.2.3
+    rev: 0b70e285e369bcb24b57b74929490ea7be9c4b19 # v2.2.3
     hooks:
       - id: check-ast
       - id: check-executables-have-shebangs
